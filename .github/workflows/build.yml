@@ -19,11 +19,8 @@ jobs:
       - name: Clean previous build
         run: rm -rf build zephyr zmk
 
-      - name: Initialize West with ZMK manifest
-        run: west init -m https://github.com/zmkfirmware/zmk.git -l .
-
-      - name: Update ZMK
-        run: west update
+      - name: Clone ZMK repository
+        run: git clone https://github.com/zmkfirmware/zmk.git
 
       - name: Verify ZMK source
         run: ls -l zmk/app
