@@ -19,7 +19,7 @@ jobs:
         run: rm -rf zephyr build zmk
 
       - name: Initialize west with ZMK manifest
-        run: west init -l config
+        run: west init -l .
 
       - name: Update and fetch modules
         run: west update
