@@ -16,12 +16,12 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Clean previous build
-        run: rm -rf zephyr build
+        run: rm -rf zephyr build zmk
 
-      - name: Initialize west
-        run: west init
+      - name: Initialize west with ZMK manifest
+        run: west init -l config
 
-      - name: Update west
+      - name: Update and fetch modules
         run: west update
 
       - name: Build left side
