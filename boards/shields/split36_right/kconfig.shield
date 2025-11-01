@@ -1,0 +1,9 @@
+config SHIELD_SPLIT36_LEFT
+    bool "Split36 Left"
+    select ZMK_KEYBOARD_SCAN
+    select ZMK_MATRIX_TRANSFORM
+
+config SHIELD_SPLIT36_RIGHT
+    bool "Split36 Right"
+    select ZMK_KEYBOARD_SCAN
+    select ZMK_MATRIX_TRANSFORM

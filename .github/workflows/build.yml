@@ -1,0 +1,38 @@
+name: Build ZMK firmware
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: zmkfirmware/zmk-build-arm:3.3
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Initialize west
+        run: west init -l config
+
+      - name: Update west
+        run: west update
+
+      - name: Build left side
+        run: |
+          west build -s zmk/app -d build/left -b nice_nano_v2 -- -DSHIELD=split36_left -DZMK_CONFIG=config
+          mv build/left/zephyr/zmk.uf2 split36_left.uf2
+
+      - name: Build right side
+        run: |
+          west build -s zmk/app -d build/right -b nice_nano_v2 -- -DSHIELD=split36_right -DZMK_CONFIG=config
+          mv build/right/zephyr/zmk.uf2 split36_right.uf2
+
+      - name: Upload UF2 files
+        uses: actions/upload-artifact@v3
+        with:
+          name: split36-firmware
+          path: "*.uf2"

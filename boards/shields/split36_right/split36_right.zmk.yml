@@ -1,0 +1,10 @@
+file_format: "1"
+id: split36_right
+name: "Split36 Right"
+type: shield
+features:
+  - keys
+layout:
+  key_count: 18
+  rows: 4
+  columns: 5

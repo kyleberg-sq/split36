@@ -1,0 +1,10 @@
+file_format: "1"
+id: split36_left
+name: "Split36 Left"
+type: shield
+features:
+  - keys
+layout:
+  key_count: 18
+  rows: 4
+  columns: 5
