@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: zmkfirmware/zmk-build-arm:stable
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -18,11 +19,14 @@ jobs:
       - name: Clean previous build
         run: rm -rf zephyr build zmk
 
-      - name: Initialize west
+      - name: Initialize west workspace
         run: west init -l .
 
-      - name: Update and fetch modules
+      - name: Update and fetch ZMK
         run: west update
+
+      - name: Verify ZMK source
+        run: ls -l zmk/app
 
       - name: Build left side
         run: |
