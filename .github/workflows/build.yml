@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: zmkfirmware/zmk-build-arm:3.5-branch‑20250623032536‑3.5.0‑0.16.3‑f93290b3ab1a‑15814477664
+      image: zmkfirmware/zmk-build-arm:stable
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
