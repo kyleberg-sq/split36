@@ -32,7 +32,7 @@ jobs:
           mv build/right/zephyr/zmk.uf2 split36_right.uf2
 
       - name: Upload UF2 files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: split36-firmware
           path: "*.uf2"
